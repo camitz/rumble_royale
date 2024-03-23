@@ -44,13 +44,11 @@ public class FunctionTest
               Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
           };
 
-          var response = await Function.FunctionHandler(request, context);
+          var response = await new Function().FunctionHandler();
 
-          Console.WriteLine("Lambda Response: \n" + response.Body);
+          Console.WriteLine("Lambda Response: \n" + response);
           Console.WriteLine("Expected Response: \n" + expectedResponse.Body);
 
-          Assert.Equal(expectedResponse.Body, response.Body);
-          Assert.Equal(expectedResponse.Headers, response.Headers);
-          Assert.Equal(expectedResponse.StatusCode, response.StatusCode);
+          Assert.Equal(body, response);
   }
 }
