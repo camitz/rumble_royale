@@ -2,3 +2,6 @@
 **/bin
 **/obj
 .idea*
+**/PerfSample1
+**/PerfSample2
+**/.aws-sam
