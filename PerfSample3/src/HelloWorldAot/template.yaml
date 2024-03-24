@@ -14,8 +14,8 @@
       "Properties": {
         "Runtime": "dotnet8",
         "CodeUri": ".",
-        "MemorySize": 256,
-        "Timeout": 30,
+        "MemorySize": 3000,
+        "Timeout": 120,
         "Policies": [
           "AWSLambdaBasicExecutionRole"
         ],
@@ -25,7 +25,7 @@
           "RootGet": {
             "Type": "Api",
             "Properties": {
-              "Path": "/",
+              "Path": "/{size}",
               "Method": "GET"
             }
           }

@@ -19,35 +19,20 @@ namespace HelloWorldAot;
 
 public class Function
 {
-    private static readonly HttpClient client = new HttpClient();
-    private static async Task<string> GetCallingIP()
-    {
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Add("User-Agent", "AWS Lambda .Net Client");
-
-        var msg = await client.GetStringAsync("http://checkip.amazonaws.com/").ConfigureAwait(continueOnCapturedContext: false);
-
-        return msg.Replace("\n", "");
-    }
-
     [LambdaFunction]
-    [RestApi(LambdaHttpMethod.Get, "/")]
-    public async Task<Dictionary<string, string>> FunctionHandler()
+    [RestApi(LambdaHttpMethod.Get, "/{size}")]
+    public async Task<Output> FunctionHandler(string size)
     {
-        var location = await GetCallingIP();
-        return new Dictionary<string, string>
-        {
-            { "message", "hello world" },
-            { "location", location }
-        };
+        Console.WriteLine($"size: {size}");
+        var mandelbrotHash = MandelBrot.Do(int.Parse(size));
+        return new Output(size, mandelbrotHash);
     }
 }
+
+public record Output(string size, string mandelbrot);
+
 [JsonSerializable(typeof(APIGatewayProxyRequest))]
 [JsonSerializable(typeof(APIGatewayProxyResponse))]
 [JsonSerializable(typeof(Dictionary<string, string>))]
-public partial class LambdaFunctionJsonSerializerContext : JsonSerializerContext
-{
-    // By using this partial class derived from JsonSerializerContext, we can generate reflection free JSON Serializer code at compile time
-    // which can deserialize our class and properties. However, we must attribute this class to tell it what types to generate serialization code for.
-    // See https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-source-generation
-}
+[JsonSerializable(typeof(Output))]
+public partial class LambdaFunctionJsonSerializerContext : JsonSerializerContext;
