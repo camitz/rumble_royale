@@ -10,23 +10,35 @@ knuthArray
     .ToList()
     .ForEach(Console.WriteLine);
 
-knuthArray
-    .Where(x => x.Length > 3)
-    .OrderByDescending(x => x.Length)
-    .SelectMany(x => x.ToCharArray())
-    .ToList()
-    .ForEach(Console.WriteLine);
+try
+{
+    knuthArray
+        .Where(x => x.Length > 3)
+        .OrderByDescending(x => x.Length)
+        .SelectMany(x => x.ToCharArray())
+        .ToList()
+        .ForEach(Console.Write);
+}
+catch (NullReferenceException e)
+{
+}
 
-(
+Console.WriteLine();
+Console.WriteLine();
+
+    (
         from x in knuthArray
         where x.Length > 3
         orderby x.Length descending
-
+        
         from y in x
         select x.ToCharArray()
     )
     .ToList()
-    .ForEach(Console.WriteLine);
+    .ForEach(Console.Write);
+
+Console.WriteLine();
+Console.WriteLine();
 
 public static class StatsExtensions
 {
@@ -37,3 +49,4 @@ public static class StatsExtensions
         return enumerable.Sum(x => Math.Pow(selector(x) - avg, 2)) / enumerable.Length;
     }
 }
+
