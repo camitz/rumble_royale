@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAot", "PerfSample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAot.Tests", "PerfSample3\test\HelloWorldAot.Test\HelloWorldAot.Tests.csproj", "{950D9286-47B1-4423-8B58-6033DCFF4438}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toll-calculator", "..\csharp-samples\csharp\tutorials\patterns\finished\toll-calculator\toll-calculator.csproj", "{6EF10951-C22F-4081-A714-C8F73E98444D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toll-calculator", "..\csharp-samples\csharp\tutorials\patterns\start\toll-calculator\toll-calculator.csproj", "{BEC533FE-55C2-45EC-BB7F-FC0409C4EA15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{950D9286-47B1-4423-8B58-6033DCFF4438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{950D9286-47B1-4423-8B58-6033DCFF4438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{950D9286-47B1-4423-8B58-6033DCFF4438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF10951-C22F-4081-A714-C8F73E98444D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF10951-C22F-4081-A714-C8F73E98444D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF10951-C22F-4081-A714-C8F73E98444D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF10951-C22F-4081-A714-C8F73E98444D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC533FE-55C2-45EC-BB7F-FC0409C4EA15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC533FE-55C2-45EC-BB7F-FC0409C4EA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC533FE-55C2-45EC-BB7F-FC0409C4EA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC533FE-55C2-45EC-BB7F-FC0409C4EA15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

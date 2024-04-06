@@ -9,14 +9,7 @@ public class AsyncLinqDemo
         var characters = new List<string>();
         var client = new HttpClient();
 
-        await foreach (var character in NewFunction())
-        {
-            characters.Add(character);
-        }
-
-        return characters;
-
-        async IAsyncEnumerable<string> NewFunction()
+        async IAsyncEnumerable<string> DefineAsyncEnumerable()
         {
             foreach (var id in _ids)
             {
@@ -24,5 +17,14 @@ public class AsyncLinqDemo
                 yield return response;
             }
         }
+
+        var asyncEnumerable = DefineAsyncEnumerable();
+        await foreach (var character in asyncEnumerable)
+        {
+            characters.Add(character);
+        }
+
+        return characters;
+
     }
 }
