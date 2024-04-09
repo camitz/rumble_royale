@@ -1,12 +1,21 @@
-﻿var knuth = "Programming is the art of telling another human being what one wants the computer to do.";
+﻿
+using LinqSample;
+
+var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+var rs =  await new AsyncLinqDemo().GetCharacters();
+stopwatch.Stop();
+Console.WriteLine(stopwatch.Elapsed);
+Console.WriteLine(rs.Sum());
+return;
+
+var knuth = "Programming is the art of telling another human being what one wants the computer to do.";
 
 var knuthArray = knuth.Split(' ');
 
 Console.WriteLine(knuthArray.Average(x => x.Length));
-Console.WriteLine(knuthArray.Variance(x => x.Length));
 
 knuthArray
-    .OrderBy(x => x.Length)
+    .OrderBy(x => x, StringComparer.CurrentCulture)
     .ToList()
     .ForEach(Console.WriteLine);
 
@@ -14,7 +23,7 @@ try
 {
     knuthArray
         .Where(x => x.Length > 3)
-        .OrderByDescending(x => x.Length)
+        .OrderBy(x => x.Length)
         .SelectMany(x => x.ToCharArray())
         .ToList()
         .ForEach(Console.Write);
@@ -29,7 +38,7 @@ Console.WriteLine();
     (
         from x in knuthArray
         where x.Length > 3
-        orderby x.Length descending
+        orderby x.Length 
         
         from y in x
         select x.ToCharArray()

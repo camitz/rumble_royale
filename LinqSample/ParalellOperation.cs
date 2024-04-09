@@ -1,6 +1,6 @@
 ﻿namespace LinqSample;
 
-public class AsyncLinqDemo
+public class ParallelOperationsDemo
 {
     public async Task<List<int>> GetCharacters()
     {
@@ -8,7 +8,7 @@ public class AsyncLinqDemo
 
         async IAsyncEnumerable<int> DefineAsyncEnumerable()
         {
-            for (int i = 0; i < 100_000_00; i++)
+            for (int i = 0; i < 10_000_000; i++)
             {
                 var t = await Task.Run(() => 1 + 1);
                 yield return t;
